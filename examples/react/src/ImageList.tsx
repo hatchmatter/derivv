@@ -1,5 +1,5 @@
 import { formatBytes } from "@derivv/core";
-import { usePresize } from "@derivv/react";
+import { useResize } from "@derivv/react";
 
 const targetSizes = [
   {
@@ -32,7 +32,7 @@ const targetSizes = [
 ];
 
 export default function ImageList() {
-  const { images, resize } = usePresize(targetSizes, {
+  const { images, resize } = useResize(targetSizes, {
     quality: 0.6,
   });
 

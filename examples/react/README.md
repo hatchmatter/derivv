@@ -1,4 +1,4 @@
-# Presize React Example
+# Derivv React Example
 
 ## Getting Started
 

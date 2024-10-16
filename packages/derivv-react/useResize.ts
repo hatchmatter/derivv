@@ -2,12 +2,12 @@ import { useCallback, useState } from "react";
 import {
   resize,
   ImageFile,
-  PresizeOptions,
+  ResizeOptions,
   Target,
   ImageError,
 } from "@derivv/core";
 
-export function useResize(targetSizes: Target[], options?: PresizeOptions) {
+export function useResize(targetSizes: Target[], options?: ResizeOptions) {
   const [images, setImages] = useState<ImageFile[] | null>(null);
   const [errors, setErrors] = useState<ImageError[] | null>(null);
 

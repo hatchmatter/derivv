@@ -1,4 +1,4 @@
-# Presize - Resize images in the browser before uploading
+# Derivv - Resize images in the browser before uploading
 
 Save time and bandwidth by resizing images in the browser before uploading. Configure target sizes and options to fit your needs.
 

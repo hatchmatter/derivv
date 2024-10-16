@@ -7,7 +7,7 @@ export type Target = {
   height?: number;
 };
 
-export type PresizeOptions = {
+export type ResizeOptions = {
   quality?: number;
   disableCrop?: boolean;
   cropCoordinates?: {
@@ -52,7 +52,7 @@ export class ImageFile extends File {
 export async function resize(
   files: FileList,
   targetSizes: Target[],
-  options?: PresizeOptions
+  options?: ResizeOptions
 ): Promise<{
   images: ImageFile[];
   errors: ImageError[];
@@ -77,7 +77,7 @@ export async function resize(
 export async function resizeOne(
   source: File,
   target: Target,
-  options?: PresizeOptions
+  options?: ResizeOptions
 ): Promise<ImageFile> {
   const sourceCanvas = document.createElement("canvas");
   const img = new Image();

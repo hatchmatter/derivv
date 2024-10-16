@@ -9,7 +9,7 @@ import store from './store'
 import App from './App'
 
 Bugsnag.start({
-  apiKey: 'c8e71c39cee3a9318f39dcd5132abe6d',
+  apiKey: import.meta.env.VITE_BUGSNAG_API_KEY!,
   plugins: [new BugsnagPluginReact()]
 })
 

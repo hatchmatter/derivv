@@ -15,6 +15,8 @@
   "dependencies": {
     "@bugsnag/js": "^7.9.2",
     "@bugsnag/plugin-react": "^7.9.2",
+    "@derivv/core": "workspace:*",
+    "@derivv/react": "workspace:*",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "blueimp-canvas-to-blob": "^3.28.0",

@@ -27,6 +27,12 @@ importers:
       '@bugsnag/plugin-react':
         specifier: ^7.9.2
         version: 7.25.0(@bugsnag/core@7.25.0)
+      '@derivv/core':
+        specifier: workspace:*
+        version: link:../../packages/derivv-core
+      '@derivv/react':
+        specifier: workspace:*
+        version: link:../../packages/derivv-react
       '@material-ui/core':
         specifier: ^4.11.3
         version: 4.12.4(@types/react@17.0.83)(react-dom@17.0.2(react@17.0.2))(react@17.0.2)

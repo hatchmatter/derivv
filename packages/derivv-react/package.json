@@ -1,0 +1,50 @@
+{
+  "name": "@derivv/react",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Levi Voelz",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup --format cjs,esm index.ts --dts",
+    "dev": "tsup --format cjs,esm index.ts --watch",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@derivv/core": "workspace:*",
+    "@types/react": "^18.3.10",
+    "eslint": "^9.11.1",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.12",
+    "globals": "^15.9.0",
+    "prettier": "^3.2.5",
+    "react": "^18.3.1",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0"
+  },
+  "peerDependencies": {
+    "@derivv/core": ">=0.1.0 <1.0.0",
+    "react": "^18.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@derivv/server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "rm -fr tmp && tsx index.ts"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "multer": "1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.17.0",
+    "typescript": "^5.6.2",
+    "@types/node": "^20.11.18",
+    "@types/express": "^4.17.14",
+    "@types/multer": "^1.4.11",
+    "@types/cors": "^2.8.12"
+  }
+}

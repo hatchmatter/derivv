@@ -12,8 +12,8 @@ Save time and bandwidth by resizing images in the browser before uploading. Conf
 
 ## Packages
 
-- [@derivv/core](./packages/core) - Core logic for image resizing and cropping
-- [@derivv/react](./packages/react) - React components and hooks for image resizing
+- [@derivv/core](./packages/derivv-core) - Core logic for image resizing and cropping
+- [@derivv/react](./packages/derivv-react) - React components and hooks for image resizing
 
 ## Install
 

@@ -8,6 +8,7 @@ export const ImageProcessButton = (props) => {
 
   const handleClick = () => {
     const configs = dimensionsList.filter(d => d.height || d.width)
+
     if (configs.length > 0) {
       processAll(image, configs)
     }

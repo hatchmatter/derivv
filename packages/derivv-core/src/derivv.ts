@@ -1,4 +1,5 @@
 import Pica from "pica";
+import { expandFileName } from "./utils";
 
 const pica = Pica();
 
@@ -14,7 +15,7 @@ export type ResizeOptions = {
     x: number;
     y: number;
   };
-  metadata?: Record<string, unknown>;
+  metadata?: Record<string, unknown> & { name?: string };
 };
 
 export class ImageError extends Error {
@@ -41,6 +42,7 @@ export class ImageFile extends File {
       originalWidth: number;
       originalHeight: number;
       originalSize: number;
+      originalName: string;
       [key: string]: unknown;
     }
   ) {
@@ -119,13 +121,18 @@ export async function resizeOne(
             source.type,
             options?.quality ?? 0.7 // anything better than 0.7 is adds to the originalfile size
           );
-          const file = new ImageFile([blob], source.name, source.type, {
+          const { name: fileName, extension } = expandFileName(source.name);
+          const name =
+            options?.metadata?.name ??
+            `${fileName}-${target.width}x${target.height}.${extension}`;
+          const file = new ImageFile([blob], name, source.type, {
             ...options?.metadata,
             originalWidth: img.width,
             originalHeight: img.height,
             originalSize: source.size,
             width: resultCanvas.width,
             height: resultCanvas.height,
+            originalName: source.name,
           });
 
           return file;
@@ -170,6 +177,7 @@ function crop(
           Math.floor((target.height as number) / 2 - img.height / 2);
 
         context.drawImage(img, x, y, img.width, img.height);
+
         resolve(canvas);
       } else {
         reject(

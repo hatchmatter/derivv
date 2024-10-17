@@ -50,3 +50,12 @@ export function formatBytes(bytes: number, decimals = 2) {
 
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
+
+export const expandFileName = (fileName: string) => {
+  const splitFileName = fileName.split(".");
+
+  return {
+    extension: splitFileName.slice(splitFileName.length - 1).join(),
+    name: splitFileName.slice(0, -1).join(),
+  };
+};

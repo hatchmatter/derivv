@@ -6,9 +6,9 @@ import './ImageCaption.css'
 import { IconButton } from '@material-ui/core';
 
 const truncate = (str, width) => {
-  const thresh = Math.max(Math.floor(width / 12), 20)
-  if (str.length > thresh) {
-    return str.slice(0, thresh) + '...'
+  const threshold = Math.max(Math.floor(width / 12), 20)
+  if (str.length > threshold) {
+    return str.slice(0, threshold) + '...'
   }
 
   return str
@@ -19,7 +19,7 @@ export const ImageCaption = ({image, processOne, originalImage}) => {
     <div className='image-caption'>
       <div className='image-caption--buttons'>
         <IconButton
-          href={image.src}
+          href={URL.createObjectURL(image)}
           download={image.name}
           title='Download only this image'
           color='primary'
@@ -34,19 +34,19 @@ export const ImageCaption = ({image, processOne, originalImage}) => {
       <div className='image-caption--text'>
         <div className='image-caption--item'>
           Name: <span title={image.name} className='image-caption--value'>
-            {truncate(image.name, image.width)}
+            {truncate(image.name, image.metadata.width)}
           </span>
         </div>
         <div className='image-caption--item'>
-          Type: <span className='image-caption--value'>{image.extension}</span>
+          Type: <span className='image-caption--value'>{image.type.split('/')[1]}</span>
         </div>
       </div>
       <div>
         <div className='image-caption--item'>
-          Width: <span className='image-caption--value'>{image.width}px</span>
+          Width: <span className='image-caption--value'>{image.metadata.width}px</span>
         </div>
         <div className='image-caption--item'>
-          Height: <span className='image-caption--value'>{image.height}px</span>
+          Height: <span className='image-caption--value'>{image.metadata.height}px</span>
         </div>
       </div>
     </div>

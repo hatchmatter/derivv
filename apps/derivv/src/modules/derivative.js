@@ -13,8 +13,8 @@ export const DERIVATIVE_CLEAR_ALL = "DERIVATIVE_CLEAR_ALL";
 export const DERIVATIVE_DOWNLOAD_ALL = "DERIVATIVE_DOWNLOAD_ALL";
 export const DERIVATIVE_ENABLE_DOWNLOAD = "DERIVATIVE_ENABLE_DOWNLOAD";
 export const DERIVATIVE_DISABLE_DOWNLOAD = "DERIVATIVE_DISABLE_DOWNLOAD";
-export const DERIVATIVE_ADD_ERROR = "DERIVATIVE_ADD_ERROR";
-
+export const DERIVATIVE_ADD_ERRORS = "DERIVATIVE_ADD_ERRORS";
+export const DERIVATIVE_CLEAR_ERRORS = "DERIVATIVE_CLEAR_ERRORS";
 // ------------------------------------
 // Actions
 // ------------------------------------
@@ -70,10 +70,16 @@ export function downloadAll() {
   };
 }
 
-function addError(error) {
+export function addErrors(errors) {
   return {
-    type: DERIVATIVE_ADD_ERROR,
-    payload: error,
+    type: DERIVATIVE_ADD_ERRORS,
+    payload: errors,
+  };
+}
+
+export function clearErrors() {
+  return {
+    type: DERIVATIVE_CLEAR_ERRORS,
   };
 }
 
@@ -81,16 +87,23 @@ export function processAll(image, configs) {
   return async (dispatch) => {
     dispatch(start());
     dispatch(clearAll());
+    dispatch(clearErrors());
+    const errors = [];
 
     for (const config of configs) {
-      const _image = await resizeOne(image, config);
+      try {
+        const _image = await resizeOne(image, config);
 
-      _image.id = config.id;
-      dispatch(add(_image));
+        _image.id = config.id;
+        dispatch(add(_image));
+      } catch (error) {
+        errors.push(error);
+      }
     }
 
     dispatch(stop());
     dispatch(enableDownload());
+    dispatch(addErrors(errors));
   };
 }
 
@@ -98,13 +111,18 @@ export function processOne(image, config) {
   return async (dispatch) => {
     dispatch(start(config.id));
     dispatch(disableDownload());
+    dispatch(clearErrors());
 
-    const _image = await resizeOne(image, config, {
+    try {
+      const _image = await resizeOne(image, config, {
       cropCoordinates: { x: config.x, y: config.y },
-      metadata: { name: config.name },
-    });
+        metadata: { name: config.name },
+      });
 
-    _image.id = config.id
+      _image.id = config.id;
+    } catch (error) {
+      dispatch(addErrors([error]));
+    }
 
     dispatch(update(_image));
     dispatch(stop());
@@ -117,6 +135,7 @@ export const actions = {
   clearAll,
   enableDownload,
   downloadAll,
+  clearErrors,
 };
 
 // ------------------------------------
@@ -124,7 +143,7 @@ export const actions = {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [DERIVATIVE_START]: (state, action) => {
-    return { ...state, acting: action.acting, error: null };
+    return { ...state, acting: action.acting, errors: null };
   },
   [DERIVATIVE_STOP]: (state, action) => {
     return { ...state, acting: action.acting };
@@ -169,8 +188,11 @@ const ACTION_HANDLERS = {
 
     return state;
   },
-  [DERIVATIVE_ADD_ERROR]: (state, action) => {
-    return { ...state, error: action.payload };
+  [DERIVATIVE_ADD_ERRORS]: (state, action) => {
+    return { ...state, errors: state.errors.concat(action.payload) };
+  },
+  [DERIVATIVE_CLEAR_ERRORS]: (state, action) => {
+    return { ...state, errors: [] };
   },
 };
 
@@ -181,7 +203,7 @@ const initialState = {
   images: [],
   acting: false,
   downloadable: false,
-  error: null,
+  errors: [],
 };
 
 export default function derivativeReducer(state = initialState, action) {

@@ -6,7 +6,8 @@ import ImageProcessButton from '@/components/ImageProcessButton'
 const mapStateToProps = (state) => ({
   dimensionsList: state.configuration.dimensionsList,
   image: state.originalImage.file,
-  processing: state.derivative.acting
+  processing: state.derivative.acting,
+  errors: state.derivative.errors
 })
 
 const mapActionCreators = {

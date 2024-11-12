@@ -113,9 +113,11 @@ export function processOne(image, config) {
     dispatch(disableDownload());
     dispatch(clearErrors());
 
+    let _image = null
+
     try {
-      const _image = await resizeOne(image, config, {
-      cropCoordinates: { x: config.x, y: config.y },
+      _image = await resizeOne(image, config, {
+        cropCoordinates: { x: config.x, y: config.y },
         metadata: { name: config.name },
       });
 

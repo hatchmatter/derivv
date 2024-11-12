@@ -10,7 +10,7 @@ import { Button, CircularProgress } from '@material-ui/core';
 
 export const ImagePreview = ({ image }) => {
   return (
-    <img src={image || placeholder} alt='preview' className='uploader--preview' />
+    <img src={image ?? placeholder} alt='preview' className='uploader--preview' />
   )
 }
 

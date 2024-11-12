@@ -6,7 +6,11 @@ import ConfigList from '@/components/ConfigList'
 const { addDimensions, removeDimensions, updateDimensions } = actions
 
 const mapStateToProps = (state) => ({
-  dimensionsList: state.configuration.dimensionsList
+  dimensionsList: state.configuration.dimensionsList,
+  originalImageDimensions: {
+    width: state.originalImage?.width,
+    height: state.originalImage?.height
+  }
 })
 
 const mapActionCreators = {

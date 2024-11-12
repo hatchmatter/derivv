@@ -7,6 +7,7 @@ import 'blueimp-canvas-to-blob'
 export const ORIGINAL_IMAGE_START = 'ORIGINAL_IMAGE_START'
 export const ORIGINAL_IMAGE_STOP = 'ORIGINAL_IMAGE_STOP'
 export const ORIGINAL_IMAGE_ADD = 'ORIGINAL_IMAGE_ADD'
+export const ORIGINAL_IMAGE_DIMENSIONS_ADD = 'ORIGINAL_IMAGE_DIMENSIONS_ADD'
 
 // ------------------------------------
 // Actions
@@ -32,6 +33,13 @@ export function add(image) {
   }
 }
 
+export function addDimensions(dimensions) {
+  return {
+    type: ORIGINAL_IMAGE_DIMENSIONS_ADD,
+    payload: dimensions
+  }
+}
+
 export function addImage(image) {
   return (dispatch) => {
     dispatch(actionStart())
@@ -51,6 +59,11 @@ export function addImage(image) {
         loadImage(
           image,
           (canvas) => {
+            dispatch(addDimensions({
+              width: canvas.width,
+              height: canvas.height
+            }))
+
             canvas.toBlob((blob) => {
               image.preview = URL.createObjectURL(blob)
 
@@ -81,6 +94,9 @@ const ACTION_HANDLERS = {
   },
   [ORIGINAL_IMAGE_ADD]: (state, action) => {
     return {...state, file: action.payload}
+  },
+  [ORIGINAL_IMAGE_DIMENSIONS_ADD]: (state, action) => {
+    return {...state, ...action.payload}
   }
 }
 
@@ -89,7 +105,9 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 const initialState = {
   file: {},
-  acting: false
+  acting: false,
+  width: null,
+  height: null
 }
 
 export default function fileReducer(state = initialState, action) {

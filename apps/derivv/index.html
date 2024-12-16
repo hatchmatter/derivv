@@ -1,119 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Derivv | Resize an image to multiple sizes</title>
-    <meta
-      name="Description"
-      content="Derivv is a great way to quickly create multiple sizes of the same image."
-    />
-    <meta charset="utf-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <title>Derivv | Resize an image to multiple sizes</title>
+  <meta name="Description" content="Derivv is a great way to quickly create multiple sizes of the same image." />
+  <meta charset="utf-8" />
 
-    <meta
-      property="og:title"
-      content="Derivv | Resize an image to multiple sizes"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://derivv.com" />
-    <meta property="og:image" content="https://derivv.com/images/logo.png" />
-    <meta property="og:site_name" content="Derivv" />
-    <meta
-      property="og:description"
-      content="Derivv is a great way to quickly create multiple sizes of the same image."
-    />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#ffffff" />
+  <meta property="og:title" content="Derivv | Resize an image to multiple sizes" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://derivv.com" />
+  <meta property="og:image" content="https://derivv.com/images/logo.png" />
+  <meta property="og:site_name" content="Derivv" />
+  <meta property="og:description" content="Derivv is a great way to quickly create multiple sizes of the same image." />
 
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/images/apple-touch-icon.png?v=3e8dyXlNnq"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/images/favicon-32x32.png?v=3e8dyXlNnq"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/images/favicon-16x16.png?v=3e8dyXlNnq"
-    />
-    <link
-      rel="mask-icon"
-      href="/images/safari-pinned-tab.svg?v=3e8dyXlNnq"
-      color="#5bbad5"
-    />
-    <link rel="shortcut icon" href="/images/favicon.ico?v=3e8dyXlNnq" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
 
-    <meta name="apple-mobile-web-app-title" content="Derivv" />
-    <meta name="application-name" content="Derivv" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta
-      name="msapplication-config"
-      content="/browserconfig.xml?v=3e8dyXlNnq"
-    />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=3e8dyXlNnq" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=3e8dyXlNnq" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=3e8dyXlNnq" />
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=3e8dyXlNnq" color="#5bbad5" />
+  <link rel="shortcut icon" href="/images/favicon.ico?v=3e8dyXlNnq" />
 
-    <link rel="stylesheet" href="/mui-styles.css" />
-    <link rel="stylesheet" href="/styles-v2.css?v=1" />
+  <meta name="apple-mobile-web-app-title" content="Derivv" />
+  <meta name="application-name" content="Derivv" />
+  <meta name="msapplication-TileColor" content="#da532c" />
+  <meta name="msapplication-config" content="/browserconfig.xml?v=3e8dyXlNnq" />
 
-    <!-- for Buy me a Coffee Button -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Cookie"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <nav class="transparent">
-      <div class="container">
-        <div class="nav-wrapper">
-          <img src="images/logo.png" class="logo" alt="derivv" />
+  <link rel="stylesheet" href="/mui-styles.css" />
+  <link rel="stylesheet" href="/styles-v2.css?v=1" />
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+</head>
+
+<body>
+  <nav class="transparent">
+    <div class="container">
+      <div class="nav-wrapper">
+        <img src="images/logo.png" class="logo" alt="derivv" />
+        <div>
+          <i>Coming soon:</i> <a href='#derivv-pro'><span style="font-weight: bold;">Derivv Pro Desktop App</span></a>
         </div>
-      </div>
-    </nav>
-    <div class="main">
-      <div class="container">
-        <div style="text-align: center; max-width: 800px; margin: auto">
-          <h1>
-            Derivv is a great way to quickly create multiple sizes of the same
-            image.
-          </h1>
-          <p>
-            Simply upload an image, add your size requirements, and create your
-            new images. When you are finished you can download all your images
-            as a zip file or download them one by one. Derivv is <b>100% browser based</b>, so your images are never uploaded
-            to a server. Privacy ensured.
-          </p>
-        </div>
-        <div id="root" style="height: 100%"></div>
-        <script type="module" src="/src/main.tsx"></script>
       </div>
     </div>
-    <footer>
-      <div class="footer-copyright">
-        <div class="container grey-text">
-          <div>
-            <div>
-              © 2024
-              <a
-                class="grey-text"
-                target="_blank"
-                href="https://hatchmatter.com"
-                >HatchMatter</a
-              >
-            </div>
-          </div>
+  </nav>
+  <div class="main">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: auto">
+        <h1>
+          Quickly create image derivatives.
+        </h1>
+        <p>
+          Simply select an image, add your size requirements, and create your
+          new images. When you are finished you can save all your images
+          as a zip file or save them one by one. Derivv is <b>100% browser based</b>, so your images are never
+          uploaded to a server. Privacy ensured.
+        </p>
+      </div>
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+    </div>
+    <hr />
+    <div class="container">
+      <h2>How it works</h2>
+      <p>
+        Derivv uses the power of the browser to resize and compress images. This means images aren't
+        uploaded to a server and they are processed quickly and privately.</p>
+      <p>Most tools like Photoshop and other bulk image resizers
+        don't accomodate multiple sizes of the same image very well. They usually require a workaround or custom script.
+        Derivv is specifically designed to resize one image to multiple sizes, which is greate for product images,
+        app icons, favicons, thumbnails, and more. If you are a web producer, web designer, photographer, site merchant,
+        or other professional who deals with image derivatives, Derivv is a great tool for you.
+      </p>
+      <h2>Features</h2>
+      <ul>
+        <li>100% browser based. No images are uploaded to a server.</li>
+        <li>Create as many sizes of the original image as you want.</li>
+        <li>Adjust the crop of the image to fit off center focal points.</li>
+        <li>Image csv of image sizes to create.</li>
+        <li>Have multiple configs for different images by importing saved csv's.</li>
+        <li>Change each image's name.</li>
+        <li>Download all images as a zip file or download them one by one.</li>
+        <li>Open source</li>
+      </ul>
+    </div>
+    <div class="container">
+      <h2>What people say about Derivv</h2>
+      <figure class="quote">
+        <blockquote>
+          Thank you for an amazing tool! I wish there was a desktop app version! Thank you
+        </blockquote>
+        <figcaption>
+          — Adam, <cite><a href="https://ko-fi.com/home/coffeeshop?txid=621b80df-043a-4232-8c1c-b0d9ebb89b07"
+              target="_blank">ko-fi</a></cite>
+        </figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>
+          I use your app on a daily basis and it's really helpful and simple.
+        </blockquote>
+        <figcaption>
+          — chezki, <cite><a href="https://ko-fi.com/home/coffeeshop?txid=ca2410c3-7d40-4a05-b3fd-d1b5acfad3e6"
+              target="_blank">ko-fi</a></cite>
+        </figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>
+          This is a great app!
+        </blockquote>
+        <figcaption>
+          — Leo, <cite><a href="https://ko-fi.com/home/coffeeshop?txid=4d6de8bf-3e9d-4ac5-8872-66e3ed54a113"
+              target="_blank">ko-fi</a></cite>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="container" id="derivv-pro" style="margin: 20rem auto; text-align: center">
+    <h2>Derivv Pro (coming soon)</h2>
+    <p>The new pro desktop app takes all the feedback gathered from Derivv users over the
+      years and bundles it into a powerful desktop application that works on Windows,
+      Mac, and Linux. Same privacy and speed with leveled up awesomeness.</p>
+    <p>
+      Get notified on release timing and let us know what features you'd like to see.
+    </p>
+    <!-- modify this form HTML and place wherever you want your form -->
+    <form id="derivv-pro-form" action="https://formspree.io/f/mdkorgov" method="POST">
+      <label>Email:</label>
+      <input type="email" name="email" required />
+      <label>Name:</label>
+      <input type="text" name="name" required />
+      <button id="derivv-pro-button">Submit</button>
+      <p id="derivv-pro-status"></p>
+    </form>
+
+    <!-- Place this script at the end of the body tag -->
+    <script>
+      var form = document.getElementById("derivv-pro-form");
+
+      async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("derivv-pro-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "Great! Talk soon :-)";
+            form.reset()
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                console.error(data["errors"])
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+              } else {
+                status.innerHTML = "Oops! There was a problem. :-/"
+              }
+            })
+          }
+        }).catch(error => {
+          status.innerHTML = "Oops! There was a problem. :-/"
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+    </script>
+  </div>
+  <footer>
+    <div class="footer-copyright">
+      <div class="container grey-text">
+        <div>
+          © 2024
+          <a class="grey-text" target="_blank" href="https://hatchmatter.com">HatchMatter, LLC</a>
+        </div>
+        <div>
+          <a href='https://github.com/hatchmatter/derivv' target="_blank"><i class='fa fa-github'
+              style="font-size: 1.6rem"></i></a>
         </div>
       </div>
-    </footer>
-    <script
-      data-goatcounter="https://derivv.goatcounter.com/count"
-      async
-      src="//gc.zgo.at/count.js"
-    ></script>
-  </body>
+    </div>
+  </footer>
+  <script data-goatcounter="https://derivv.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
 </html>

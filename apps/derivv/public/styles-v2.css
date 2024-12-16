@@ -46,6 +46,25 @@ p {
   margin-top: 1.5em
 }
 
+a {
+  color: #ee6e73;
+}
+
+hr {
+  margin: 5rem;
+}
+
+.quote {
+  margin: 2rem 0 0;
+  background: #eee;
+  padding: 1rem;
+  border-radius: 0.6rem;
+}
+.quote figcaption,
+.quote blockquote {
+  margin: 1rem;
+}
+
 table {
   margin-left: -24px;
 }
@@ -61,8 +80,7 @@ td {
 }
 
 #root {
-  padding: 40px;
-  margin-bottom: 100px;
+  margin-top: 2rem;
   img {
     max-width: initial;
   }
@@ -79,7 +97,8 @@ img {
 }
 
 footer {
-  padding: 10px;
+  padding: 10px 0;
+  margin-top: 4rem;
   background-color: #eee;
 }
 
@@ -96,4 +115,11 @@ footer {
 .logo {
   max-width: 130px;
   padding: 10px;
+}
+
+#derivv-pro {
+  margin: 4rem auto;
+  padding: 0 2rem 2rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
 }

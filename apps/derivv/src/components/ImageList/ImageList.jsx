@@ -46,7 +46,7 @@ export const ImageList = ({images, originalImage, processOne, processing}) => (
   <div className='images--list'>
     {images.map((image, i) => (
       <Image
-        key={image.id}
+        key={image.id ?? i+image}
         image={image}
         processOne={processOne}
         processing={processing}

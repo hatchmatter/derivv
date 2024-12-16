@@ -9,6 +9,7 @@ import ImageDisplayer from '../containers/ImageDisplayer'
 import DerivativesDownloader from '../containers/DerivativesDownloader'
 import ConfigExport from '../containers/ConfigExport'
 import ConfigImport from '../containers/ConfigImport'
+import ConfigReset from '@/components/ConfigReset';
 
 export const HomeView = () => (
   <CoreLayout>
@@ -18,6 +19,7 @@ export const HomeView = () => (
     <div style={{display: 'flex'}}>
       <ConfigImport />
       <ConfigExport />
+      <ConfigReset />
     </div>
     <Configuration />
 

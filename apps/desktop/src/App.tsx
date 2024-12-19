@@ -1,3 +1,4 @@
+import { getCurrentWindow } from "@tauri-apps/api/window";
 import { useEffect } from "react";
 import "./index.css";
 
@@ -18,8 +19,21 @@ function App() {
     return () => mediaQuery.removeEventListener("change", updateTheme);
   }, []);
 
+  useEffect(() => {
+    const appWindow = getCurrentWindow();
+
+    document.getElementById("titlebar")?.addEventListener("mousedown", (e) => {
+      if (e.buttons === 1) {
+        // Primary (left) button
+        e.detail === 2
+          ? appWindow.toggleMaximize() // Maximize on double click
+          : appWindow.startDragging(); // Else start dragging
+      }
+    });
+  }, []);
+
   return (
-    <div>
+    <div id="titlebar" className="flex items-center justify-center h-10">
       <h1>Derivv</h1>
     </div>
   );

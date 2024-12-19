@@ -1,0 +1,13 @@
+{
+  "name": "@derivv/lib",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./utils": "./utils.ts"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "tailwind-merge": "^2.5.5",
+    "clsx": "^2.1.1"
+  }
+}

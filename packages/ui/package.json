@@ -1,0 +1,17 @@
+{
+  "name": "@derivv/ui",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./Button": "./src/Button.tsx"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@derivv/lib": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0",
+    "@radix-ui/react-slot": "^1.1.1",
+    "class-variance-authority": "^0.7.1"
+  }
+}

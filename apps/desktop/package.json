@@ -11,6 +11,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@derivv/components": "workspace:*",
     "@derivv/lib": "workspace:*",
     "@derivv/ui": "workspace:*",
     "@tauri-apps/api": "^2",

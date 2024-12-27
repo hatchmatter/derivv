@@ -130,6 +130,9 @@ importers:
 
   apps/desktop:
     dependencies:
+      '@derivv/components':
+        specifier: workspace:*
+        version: link:../../packages/components
       '@derivv/lib':
         specifier: workspace:*
         version: link:../../packages/lib
@@ -274,14 +277,16 @@ importers:
         version: 5.4.8(@types/node@22.10.2)(lightningcss@1.28.2)
 
   packages/components:
-    dependencies:
-      react:
-        specifier: '>=18 || >=19'
-        version: 18.3.1
     devDependencies:
       '@derivv/ui':
         specifier: workspace:*
         version: link:../ui
+      '@types/react':
+        specifier: ^19.0.2
+        version: 19.0.2
+      react:
+        specifier: ^18.3.1 || ^19.0.0
+        version: 19.0.0
 
   packages/derivv-core:
     dependencies:
@@ -373,9 +378,6 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      react:
-        specifier: ^18.3.1 || ^19.0.0
-        version: 18.3.1
       tailwind-merge:
         specifier: ^2.5.5
         version: 2.5.5
@@ -383,6 +385,9 @@ importers:
       '@types/react':
         specifier: ^19.0.2
         version: 19.0.2
+      react:
+        specifier: ^18.3.1 || ^19.0.0
+        version: 18.3.1
 
   packages/ui:
     dependencies:

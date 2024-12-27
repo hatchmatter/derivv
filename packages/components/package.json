@@ -9,9 +9,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@derivv/ui": "workspace:*"
+    "@derivv/ui": "workspace:*",
+    "@types/react": "^19.0.2",
+    "react": "^18.3.1 || ^19.0.0"
   },
   "peerDependencies": {
     "react": ">=18 || >=19"
+  },
+  "exports": {
+    "./*": "./src/*.tsx"
   }
 }

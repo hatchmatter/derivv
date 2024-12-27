@@ -23,7 +23,8 @@
     /* Paths */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@derivv/ui/*": ["../../packages/ui/src/*"]
     }
   },
   "include": ["src"],

@@ -1,5 +1,5 @@
 import { useThemeMode, useTitlebar } from "@/lib/hooks";
-import "./index.css";
+import "@derivv/ui/globals.css";
 
 function App() {
   useThemeMode();

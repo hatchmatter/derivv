@@ -23,10 +23,10 @@ or
 turbo dev # from root
 ```
 
-# Install UI components
+# Install new UI components
 
 ```bash
-pnpm dlx shadcn@latest add
+pnpm dlx shadcn@canary add
 ```
 
-This adds the components to `src/components/ui`, which is not what we want. After installing, move the file to `packages/ui`, add the file to the `exports` section in `packages/ui/package.json`, and run `pnpm install`. This process will be automated in the future.
+This adds the components to `@derivv/ui/src/components/`.

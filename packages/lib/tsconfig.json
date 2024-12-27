@@ -3,12 +3,11 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    // "jsx": "react-jsx",
     "declaration": true,
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node"
   },
   "include": ["./**/*.ts"],
-  // "exclude": ["node_modules"]
+  "exclude": ["node_modules"]
 }

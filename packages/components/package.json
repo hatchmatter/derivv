@@ -1,0 +1,17 @@
+{
+  "name": "@derivv/components",
+  "version": "0.1.0",
+  "description": "Composed components specifically for Derivv",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@derivv/ui": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18 || >=19"
+  }
+}

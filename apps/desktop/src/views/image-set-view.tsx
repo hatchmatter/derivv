@@ -1,40 +1,36 @@
-import { convertFileSrc } from "@tauri-apps/api/core";
+import { useState, useCallback } from "react";
+import { OriginalImages } from "@/components/original-images";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@derivv/ui/components/resizable";
 
-type Props = {
-  children: React.ReactNode;
-};
+export function ImageSetView() {
+  const [images, setImages] = useState<Image[]>([]);
 
-export function ImageSetView({ children }: Props) {
+  const mergeImages = useCallback(
+    (images: Image[]) => {
+      setImages((prevImages) => [...prevImages, ...images]);
+    },
+    [setImages]
+  );
+
   return (
     <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel collapsible minSize={70}>
+      <ResizablePanel>
         <ResizablePanelGroup direction="vertical">
           <ResizablePanel>derivatives</ResizablePanel>
           <ResizableHandle />
-          <ResizablePanel minSize={30} maxSize={30}>
-            {children}
+          <ResizablePanel minSize={25} maxSize={35} defaultSize={35}>
+            <OriginalImages onSelect={mergeImages} images={images} />
           </ResizablePanel>
         </ResizablePanelGroup>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel maxSize={20} minSize={20}>
+      <ResizablePanel maxSize={25} minSize={15} defaultSize={20}>
         Config
       </ResizablePanel>
     </ResizablePanelGroup>
-  );
-}
-
-export function DerivativeImages({ images }: { images: string[] }) {
-  return (
-    <div>
-      {images.map((image) => (
-        <img src={convertFileSrc(image)} key={image} />
-      ))}
-    </div>
   );
 }

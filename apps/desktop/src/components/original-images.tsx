@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
+import { RotateCcw } from "lucide-react";
 
 import { OpenImages } from "@/components/open-images";
 import { OriginalImage } from "@/components/original-image";
 import { ScrollArea, ScrollBar } from "@derivv/ui/components/scroll-area";
+import { Button } from "@derivv/ui/components/button";
 
 type Props = {
   images: Image[];
@@ -10,41 +12,27 @@ type Props = {
 };
 
 export function OriginalImages({ images, onSelect }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const setWidth = () => {
-      if (ref.current) {
-        const parent = ref.current.parentElement;
-        if (parent) {
-          ref.current.style.width = `${parent.clientWidth}px`;
-        }
-      }
-    };
-
-    setWidth();
-
-    window.addEventListener("resize", setWidth);
-
-    return () => {
-      window.removeEventListener("resize", setWidth);
-    };
-  }, []);
-
   return (
-    <div className="w-full h-full flex items-center px-4">
-      {images.length > 0 && (
-        <ScrollArea ref={ref} className="flex-1 whitespace-nowrap">
-          <div className="flex w-max space-x-4 p-4 items-center">
-            {images.map((image) => (
+    <div className="h-full flex items-center">
+      <ScrollArea className="basis-11/12">
+        <div className="flex space-x-4 p-4 items-center">
+          {images.length > 0 &&
+            images.map((image) => (
               <OriginalImage image={image} key={image.id} />
             ))}
-          </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
-      )}
-      <div className="flex-none px-4">
+        </div>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
+      <div className="flex flex-col items-center justify-center basis-1/12 p-4 bg-muted rounded-md m-2 border-l">
         <OpenImages onSelect={onSelect} />
+        <Button
+          title="Reset"
+          variant="ghost"
+          size="icon"
+          className="[&_svg]:size-5"
+        >
+          <RotateCcw />
+        </Button>
       </div>
     </div>
   );

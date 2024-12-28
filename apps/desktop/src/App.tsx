@@ -1,10 +1,13 @@
-import { store } from "./store";
 import { Provider as ReduxProvider } from "react-redux";
 
-import { useThemeMode, useTitlebar } from "@/lib/hooks";
+import { store } from "@/store";
+import { useThemeMode } from "@/hooks/useTheme";
+import { useTitlebar } from "@/hooks/useTitlebar";
+import Layout from "@/Layout";
+
 import { SidebarProvider } from "@derivv/ui/components/sidebar";
+
 import "@derivv/ui/globals.css";
-import Layout from "./Layout";
 
 function App() {
   useThemeMode();

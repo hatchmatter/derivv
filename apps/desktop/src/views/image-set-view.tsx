@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
 import { OriginalImages } from "@/components/original-images";
+
 import {
   ResizableHandle,
   ResizablePanel,
@@ -7,15 +7,6 @@ import {
 } from "@derivv/ui/components/resizable";
 
 export function ImageSetView() {
-  const [images, setImages] = useState<Image[]>([]);
-
-  const mergeImages = useCallback(
-    (images: Image[]) => {
-      setImages((prevImages) => [...prevImages, ...images]);
-    },
-    [setImages]
-  );
-
   return (
     <ResizablePanelGroup direction="horizontal">
       <ResizablePanel>
@@ -23,7 +14,7 @@ export function ImageSetView() {
           <ResizablePanel>derivatives</ResizablePanel>
           <ResizableHandle />
           <ResizablePanel minSize={25} maxSize={35} defaultSize={35}>
-            <OriginalImages onSelect={mergeImages} images={images} />
+            <OriginalImages />
           </ResizablePanel>
         </ResizablePanelGroup>
       </ResizablePanel>

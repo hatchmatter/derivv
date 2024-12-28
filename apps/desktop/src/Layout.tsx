@@ -1,10 +1,8 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { Separator } from "@derivv/ui/components/separator"
-import {
-  SidebarInset,
-  SidebarTrigger,
-} from "@derivv/ui/components/sidebar"
-import ImageSet from "@/routes/ImageSet"
+import { AppSidebar } from "@/components/app-sidebar";
+import ImageSet from "@/routes/ImageSet";
+
+import { Separator } from "@derivv/ui/components/separator";
+import { SidebarInset, SidebarTrigger } from "@derivv/ui/components/sidebar";
 
 export default function Layout() {
   return (
@@ -22,5 +20,5 @@ export default function Layout() {
         </div>
       </SidebarInset>
     </>
-  )
+  );
 }

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Button } from "@derivv/ui/components/button";
-import { EllipsisVertical, Trash } from "lucide-react";
 import { useDispatch } from "react-redux";
+import { EllipsisVertical, Trash } from "lucide-react";
+
 import { removeImage } from "@/features/original-images-slice";
+import { Button } from "@derivv/ui/components/button";
 
 type Props = {
   image: Image;
@@ -37,7 +38,11 @@ export function OriginalImage({ image }: Props) {
           {dimensions.width}x{dimensions.height}
         </span>
         <div className="flex items-center">
-          <Button variant="ghost" size="icon" onClick={() => dispatch(removeImage(image))}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => dispatch(removeImage(image))}
+          >
             <Trash />
           </Button>
           <Button

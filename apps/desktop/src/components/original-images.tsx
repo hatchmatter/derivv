@@ -9,7 +9,7 @@ import { OpenImages, openImages } from "@/components/open-images";
 import { OriginalImage } from "@/components/original-image";
 import { RootState } from "@/store";
 import { addImages, clearImages } from "@/features/original-images-slice";
-import { useMousetrap } from "@/lib/useMousetrap";
+import { useMousetrap } from "@/hooks/useMousetrap";
 import shortcuts from "@/lib/shortcuts";
 
 export function OriginalImages() {

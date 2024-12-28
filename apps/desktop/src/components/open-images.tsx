@@ -1,8 +1,10 @@
 import { convertFileSrc } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
-import { Button } from "@derivv/ui/components/button";
+
 import { useCallback } from "react";
 import { PlusIcon } from "lucide-react";
+
+import { Button } from "@derivv/ui/components/button";
 
 type Props = {
   onSelect: (images: Image[]) => void;
@@ -14,16 +16,7 @@ export const openImages = async (callback: (images: Image[]) => void) => {
     filters: [
       {
         name: "Images",
-        extensions: [
-          "jpg",
-          "jpeg",
-          "png",
-          "gif",
-          "bmp",
-          "tiff",
-          "ico",
-          "webp",
-        ],
+        extensions: ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "ico", "webp"],
       },
     ],
   });
@@ -37,7 +30,7 @@ export const openImages = async (callback: (images: Image[]) => void) => {
 
     callback(images);
   }
-}
+};
 
 export function OpenImages({ onSelect, ...props }: Props) {
   const handleOpen = useCallback(() => {

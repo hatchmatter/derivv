@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 import {
   Sidebar,
@@ -10,8 +10,8 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarRail
-} from "@derivv/ui/components/sidebar"
+  SidebarRail,
+} from "@derivv/ui/components/sidebar";
 
 // This is sample data.
 const data = {
@@ -30,9 +30,9 @@ const data = {
           isActive: false,
         },
       ],
-    }
+    },
   ],
-}
+};
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   data?: typeof data;
@@ -62,5 +62,5 @@ export function AppSidebar({ title, ...props }: AppSidebarProps) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import logger from 'redux-logger'
 import originalImageReducer from "./features/original-images-slice";
 

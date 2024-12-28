@@ -18,7 +18,6 @@ const data = {
   navMain: [
     {
       title: "Image Sets",
-      url: "#",
       items: [
         {
           title: "Placeholder set 1",
@@ -35,15 +34,16 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  data?: typeof data;
+}
+
+export function AppSidebar({ title, ...props }: AppSidebarProps) {
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
-        
-      </SidebarHeader>
+      <SidebarHeader>.</SidebarHeader>
       <SidebarContent>
-        {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
+        {(props.data?.navMain ?? data.navMain).map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>

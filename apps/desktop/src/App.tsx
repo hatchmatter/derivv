@@ -1,3 +1,6 @@
+import { store } from "./store";
+import { Provider as ReduxProvider } from "react-redux";
+
 import { useThemeMode, useTitlebar } from "@/lib/hooks";
 import { SidebarProvider } from "@derivv/ui/components/sidebar";
 import "@derivv/ui/globals.css";
@@ -8,9 +11,11 @@ function App() {
   useTitlebar();
 
   return (
-    <SidebarProvider>
-      <Layout />
-    </SidebarProvider>
+    <ReduxProvider store={store}>
+      <SidebarProvider>
+        <Layout />
+      </SidebarProvider>
+    </ReduxProvider>
   );
 }
 

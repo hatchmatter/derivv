@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "@derivv/ui/components/button";
 import { EllipsisVertical, Trash } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { removeImage } from "@/features/original-images-slice";
 
 type Props = {
   image: Image;
@@ -9,7 +11,7 @@ type Props = {
 export function OriginalImage({ image }: Props) {
   const title = image.path.split("/").pop();
   const extension = image.path.split(".").pop();
-
+  const dispatch = useDispatch();
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -25,7 +27,7 @@ export function OriginalImage({ image }: Props) {
           src={image.url}
           alt={image.path}
           title={title}
-          className="w-60 h-40 object-cover hover:object-contain transition[object-fit]"
+          className="w-44 h-44 object-cover hover:object-contain transition[object-fit]"
         />
       </Button>
 
@@ -35,7 +37,7 @@ export function OriginalImage({ image }: Props) {
           {dimensions.width}x{dimensions.height}
         </span>
         <div className="flex items-center">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" onClick={() => dispatch(removeImage(image))}>
             <Trash />
           </Button>
           <Button

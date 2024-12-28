@@ -1,3 +1,5 @@
+export { useMousetrap } from "./useMousetrap";
+
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { useEffect } from "react";
 
@@ -41,3 +43,5 @@ export const useTitlebar = () => {
     };
   }, []);
 };
+
+

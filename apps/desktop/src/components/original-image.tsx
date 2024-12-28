@@ -19,7 +19,7 @@ export function OriginalImage({ image }: Props) {
 
   return (
     <figure className="shrink-0 p-2 border rounded-md bg-muted">
-      <Button variant="ghost" asChild className="hover:cursor-pointer">
+      <Button variant="ghost" asChild className="hover:cursor-pointer p-0">
         <img
           onLoad={handleImageLoad}
           src={image.url}
@@ -31,14 +31,18 @@ export function OriginalImage({ image }: Props) {
 
       <figcaption className="pt-2 text-xs text-muted-foreground flex items-center justify-between gap-2">
         {extension}
-        <span className="font-semibold text-foreground">
+        <span className="text-foreground">
           {dimensions.width}x{dimensions.height}
         </span>
         <div className="flex items-center">
           <Button variant="ghost" size="icon">
             <Trash />
           </Button>
-          <Button variant="ghost" size="icon" className="-ml-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="-ml-2 -mr-2 hover:bg-transparent"
+          >
             <EllipsisVertical />
           </Button>
         </div>

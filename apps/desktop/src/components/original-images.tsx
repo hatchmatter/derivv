@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { OpenImages } from "@/components/add-images";
+import { OpenImages } from "@/components/open-images";
 import { OriginalImage } from "@/components/original-image";
 import { ScrollArea, ScrollBar } from "@derivv/ui/components/scroll-area";
 

@@ -30,4 +30,4 @@ export const originalImagesSlice = createSlice({
 
 export const { addImages, removeImage, clearImages } =
   originalImagesSlice.actions;
-export default undoable(originalImagesSlice.reducer);
+export default originalImagesSlice.reducer

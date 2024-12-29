@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { PlusIcon } from "lucide-react";
 
 import { Button } from "@derivv/ui/components/button";
+import { EXTENSIONS } from "@/lib/constants";
 
 type Props = {
   onSelect: (images: Image[]) => void;
@@ -16,7 +17,7 @@ export const openImages = async (callback: (images: Image[]) => void) => {
     filters: [
       {
         name: "Images",
-        extensions: ["jpg", "jpeg", "png", "gif", "bmp", "tiff", "ico", "webp"],
+        extensions: EXTENSIONS,
       },
     ],
   });

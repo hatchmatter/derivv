@@ -1,5 +1,5 @@
 import { OriginalImages } from "@/components/original-images";
-
+import { DerivativesConfig } from "@/components/derivatives-config/derivatives-config";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -20,7 +20,7 @@ export function ImageSetView() {
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel maxSize={25} minSize={15} defaultSize={20}>
-        Config
+        <DerivativesConfig />
       </ResizablePanel>
     </ResizablePanelGroup>
   );

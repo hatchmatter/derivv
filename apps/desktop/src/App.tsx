@@ -6,6 +6,7 @@ import { useTitlebar } from "@/hooks/useTitlebar";
 import Layout from "@/Layout";
 
 import { SidebarProvider } from "@derivv/ui/components/sidebar";
+import { Toaster } from "@derivv/ui/components/sonner";
 
 import "@derivv/ui/globals.css";
 
@@ -17,6 +18,7 @@ function App() {
     <ReduxProvider store={store}>
       <SidebarProvider>
         <Layout />
+        <Toaster />
       </SidebarProvider>
     </ReduxProvider>
   );

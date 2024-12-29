@@ -13,8 +13,8 @@ import { useMousetrap } from "@/hooks/useMousetrap";
 import shortcuts from "@/lib/shortcuts";
 
 export function OriginalImages() {
-  const originalImages = useSelector(
-    (state: RootState) => state.originalImages.present.images
+  const { images } = useSelector(
+    (state: RootState) => state.present.originalImages
   );
   const dispatch = useDispatch();
 
@@ -38,8 +38,8 @@ export function OriginalImages() {
     <div className="h-full flex items-center">
       <ScrollArea className="basis-11/12">
         <div className="flex space-x-4 p-4 items-center">
-          {originalImages.length > 0 &&
-            originalImages.map((image) => (
+          {images.length > 0 &&
+            images.map((image) => (
               <OriginalImage image={image} key={image.id} />
             ))}
         </div>

@@ -24,6 +24,7 @@
     "react-redux": "^7.2.3",
     "redux-logger": "^3.0.6",
     "redux-undo": "^1.1.0",
+    "sonner": "^1.7.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
   },

@@ -17,7 +17,7 @@ import {
 const data = {
   navMain: [
     {
-      title: "Image Sets",
+      title: "Recent Image Sets",
       items: [
         {
           title: "Placeholder set 1",

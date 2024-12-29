@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 import { Input } from "@derivv/ui/components/input";
 import { DerivativeConfigDimensions } from "@/components/derivatives-config/derivatives-config-dimensions";
+import { DerivativesConfigQuality } from "@/components/derivatives-config/derivatives-config-quality";
+import { DerivativesConfigAdvanced } from "@/components/derivatives-config/derivatives-config-advanced";
 
 import { RootState } from "@/store";
 import { setConfigName } from "@/features/derivative-config-slice";
@@ -36,7 +38,9 @@ export function DerivativesConfig() {
       </div>
       <hr className="my-2" />
       <DerivativeConfigName />
+      <DerivativesConfigQuality />
       <DerivativeConfigDimensions />
+      <DerivativesConfigAdvanced />
     </div>
   );
 }

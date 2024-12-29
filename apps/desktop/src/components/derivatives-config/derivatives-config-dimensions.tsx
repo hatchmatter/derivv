@@ -41,7 +41,7 @@ export const DerivativeConfigDimensions = () => {
 
   return (
     <>
-      <SectionTitle className="flex items-center justify-between">
+      <SectionTitle className="flex items-center justify-between mt-4">
         Dimensions
         <DropdownMenu
           data={[

@@ -17,7 +17,7 @@ const initialState: DerivativeConfigState = {
   id: crypto.randomUUID(),
   dimensions: [{ width: 200, height: 200, id: crypto.randomUUID() }],
   fileType: "jpg",
-  quality: 100,
+  quality: 75,
   outputPath: "~/Desktop",
   zip: false,
   name: "Untitled Config",
@@ -44,9 +44,17 @@ export const derivativeConfigSlice = createSlice({
     setConfigName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
+    setQuality: (state, action: PayloadAction<number>) => {
+      state.quality = action.payload;
+    },
   },
 });
 
-export const { addDimension, removeDimension, clearDimensions, setConfigName } =
-  derivativeConfigSlice.actions;
+export const {
+  addDimension,
+  removeDimension,
+  clearDimensions,
+  setConfigName,
+  setQuality,
+} = derivativeConfigSlice.actions;
 export default derivativeConfigSlice.reducer;

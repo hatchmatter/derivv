@@ -26,7 +26,10 @@ const exampleData = [
       },
       {
         label: "Settings",
-        shortcut: "⌘S",
+        shortcut: "⌘,",
+        handler: () => {
+          alert("Settings");
+        },
       },
       {
         label: "Keyboard shortcuts",
@@ -42,13 +45,15 @@ type DropdownMenuProps = {
     items: {
       label: string;
       shortcut?: string;
+      handler?: () => void;
     }[];
   }[];
+  modal?: boolean;
 };
 
-export function DropdownMenu({ data }: DropdownMenuProps) {
+export function DropdownMenu({ data, ...props }: DropdownMenuProps) {
   return (
-    <DropdownMenuUI>
+    <DropdownMenuUI {...props}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="hover:bg-transparent focus-visible:ring-0">
           <EllipsisVertical />
@@ -62,7 +67,7 @@ export function DropdownMenu({ data }: DropdownMenuProps) {
             )}
             {section.sectionTitle && <DropdownMenuSeparator />}
             {section.items.map((item, index) => (
-              <DropdownMenuItem key={index}>
+              <DropdownMenuItem key={index} onClick={item.handler}>
                 {item.label}
                 {item.shortcut && (
                   <DropdownMenuShortcut>{item.shortcut}</DropdownMenuShortcut>

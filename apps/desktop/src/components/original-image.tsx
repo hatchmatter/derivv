@@ -28,7 +28,7 @@ export function OriginalImage({ image }: Props) {
           src={image.url}
           alt={image.path}
           title={title}
-          className="w-44 h-44 object-cover hover:object-contain transition[object-fit]"
+          className="w-40 h-40 object-cover hover:object-contain"
         />
       </Button>
 

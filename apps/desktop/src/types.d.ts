@@ -1,11 +1,11 @@
 type Image = {
-  path: string;
   id: string;
+  path: string;
   url: string;
 };
 
 type Dimension = {
+  id: string;
   width: number;
   height: number;
-  id: string;
 };

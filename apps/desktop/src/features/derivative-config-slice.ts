@@ -1,11 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { EXTENSIONS } from "@/lib/constants";
+import { EXTENSIONS, UNITS, DPI } from "@/lib/constants";
+
+export type Units = (typeof UNITS)[number];
+export type DPI = (typeof DPI)[number];
 
 export interface DerivativeConfigState {
   id: string;
   dimensions: Dimension[];
+  dimensionsSettings: {
+    units: Units;
+    dpi: DPI;
+    "2x": boolean;
+    "3x": boolean;
+  };
   fileType: (typeof EXTENSIONS)[number];
   quality: number;
   outputPath: string;
@@ -15,7 +24,19 @@ export interface DerivativeConfigState {
 
 const initialState: DerivativeConfigState = {
   id: crypto.randomUUID(),
-  dimensions: [{ width: 200, height: 200, id: crypto.randomUUID() }],
+  dimensions: [
+    {
+      id: crypto.randomUUID(),
+      width: 200,
+      height: 200,
+    },
+  ],
+  dimensionsSettings: {
+    units: "px",
+    dpi: 72,
+    "2x": false,
+    "3x": false,
+  },
   fileType: "jpg",
   quality: 75,
   outputPath: "~/Desktop",
@@ -47,6 +68,17 @@ export const derivativeConfigSlice = createSlice({
     setQuality: (state, action: PayloadAction<number>) => {
       state.quality = action.payload;
     },
+    updateDimensionsSettings: (
+      state,
+      action: PayloadAction<
+        Partial<DerivativeConfigState["dimensionsSettings"]>
+      >
+    ) => {
+      state.dimensionsSettings = {
+        ...state.dimensionsSettings,
+        ...action.payload,
+      };
+    },
   },
 });
 
@@ -56,5 +88,7 @@ export const {
   clearDimensions,
   setConfigName,
   setQuality,
+  updateDimensionsSettings,
 } = derivativeConfigSlice.actions;
+export const actions = derivativeConfigSlice.actions;
 export default derivativeConfigSlice.reducer;

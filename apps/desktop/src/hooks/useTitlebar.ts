@@ -4,7 +4,6 @@ import { useEffect } from "react";
 export const useTitlebar = () => {
   useEffect(() => {
     const appWindow = getCurrentWindow();
-
     const titlebar = document.getElementById("titlebar");
 
     if (!titlebar) return;

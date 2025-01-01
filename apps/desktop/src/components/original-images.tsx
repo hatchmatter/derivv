@@ -1,4 +1,4 @@
-import { RotateCcw } from "lucide-react";
+import { Repeat } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { ActionCreators } from 'redux-undo';
 
@@ -54,7 +54,7 @@ export function OriginalImages() {
           className="[&_svg]:size-5"
           onClick={() => dispatch(clearImages())}
         >
-          <RotateCcw />
+          <Repeat />
         </Button>
       </div>
     </div>

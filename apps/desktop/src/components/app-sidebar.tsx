@@ -41,7 +41,7 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 export function AppSidebar({ title, ...props }: AppSidebarProps) {
   return (
     <Sidebar {...props}>
-      <SidebarHeader>.</SidebarHeader>
+      <SidebarHeader>&nbsp;</SidebarHeader>
       <SidebarContent>
         {(props.data?.navMain ?? data.navMain).map((item) => (
           <SidebarGroup key={item.title}>

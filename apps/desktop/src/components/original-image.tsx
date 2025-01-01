@@ -22,13 +22,13 @@ export function OriginalImage({ image }: Props) {
 
   return (
     <figure className="shrink-0 p-2 border rounded-md bg-muted">
-      <Button variant="ghost" asChild className="hover:cursor-pointer p-0">
+      <Button variant="ghost" asChild className="hover:cursor-pointer p-0 hover:rounded-none">
         <img
           onLoad={handleImageLoad}
           src={image.url}
           alt={image.path}
           title={title}
-          className="w-40 h-40 object-cover hover:object-contain"
+          className="w-64 h-40 object-cover hover:object-contain hover:bg-background"
         />
       </Button>
 

@@ -54,6 +54,14 @@ export const derivativeConfigSlice = createSlice({
     addDimension: (state, action: PayloadAction<Dimension>) => {
       state.dimensions.push(action.payload);
     },
+    updateDimension: (state, action: PayloadAction<Dimension>) => {
+      const index = state.dimensions.findIndex(
+        (dimension) => dimension.id === action.payload.id
+      );
+      if (index !== -1) {
+        state.dimensions[index] = action.payload;
+      }
+    },
     removeDimension: (state, action: PayloadAction<Dimension>) => {
       state.dimensions = state.dimensions.filter(
         (dimension) => dimension.id !== action.payload.id
@@ -84,6 +92,7 @@ export const derivativeConfigSlice = createSlice({
 
 export const {
   addDimension,
+  updateDimension,
   removeDimension,
   clearDimensions,
   setConfigName,

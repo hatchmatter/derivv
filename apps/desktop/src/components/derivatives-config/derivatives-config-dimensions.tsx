@@ -1,23 +1,27 @@
 import { useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Trash, CornerDownLeft, Pencil } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@derivv/ui/components/button";
-import { Input } from "@derivv/ui/components/input";
-import { RootState } from "@/store";
 import {
-  addDimension,
-  removeDimension,
-} from "@/features/derivative-config-slice";
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@derivv/ui/components/dialog";
+
 import { SectionTitle } from "@/components/section-title";
 import { DimensionsMenu } from "@/components/derivatives-config/dimensions-menu";
+import { DimensionsInput } from "@/components/derivatives-config/dimensions-input";
+import { useDerivativesConfig } from "@/hooks/use-derivatives-config";
+import { pixelsToInches, inchesToPixels } from "@/lib/helpers";
 
 export const DerivativeConfigDimensions = () => {
-  const { dimensions, dimensionsSettings } = useSelector(
-    (state: RootState) => state.present.derivativeConfig
-  );
-  const dispatch = useDispatch();
+  const { dimensions, dimensionsSettings, addDimension, dispatch } =
+    useDerivativesConfig();
 
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,17 +50,19 @@ export const DerivativeConfigDimensions = () => {
 
   const has2x = dimensionsSettings["2x"];
   const has3x = dimensionsSettings["3x"];
-  const resolutionText = [
-    has2x ? "+@2x" : "",
-    has3x ? "+@3x" : "",
-  ].filter(Boolean).join(", ");
+  const resolutionText = [has2x ? "+@2x" : "", has3x ? "+@3x" : ""]
+    .filter(Boolean)
+    .join(", ");
 
   return (
     <>
       <SectionTitle className="flex items-center justify-between mt-4">
         Dimensions
-        {dimensionsSettings.units === "in" && ` (${dimensionsSettings.dpi} DPI)`}
-        {dimensionsSettings.units === "px" && resolutionText && ` (${resolutionText})`}
+        {dimensionsSettings.units === "in" &&
+          ` (${dimensionsSettings.dpi} DPI)`}
+        {dimensionsSettings.units === "px" &&
+          resolutionText &&
+          ` (${resolutionText})`}
         <DimensionsMenu />
       </SectionTitle>
       <DimensionList
@@ -66,22 +72,7 @@ export const DerivativeConfigDimensions = () => {
       />
       <form onSubmit={handleSubmit}>
         <div className="flex w-full max-w-sm items-center space-x-2 mt-2">
-          <Input
-            type="number"
-            placeholder="Width"
-            name="width"
-            min={1}
-            max={dimensionsSettings.units === "in" ? 100 : undefined}
-            step={dimensionsSettings.units === "px" ? 1 : 0.01}
-          />
-          <Input
-            type="number"
-            placeholder="Height"
-            name="height"
-            min={1}
-            max={dimensionsSettings.units === "in" ? 100 : undefined}
-            step={dimensionsSettings.units === "px" ? 1 : 0.01}
-          />
+          <DimensionsInput units={dimensionsSettings.units} />
           <Button
             type="submit"
             variant="ghost"
@@ -106,15 +97,42 @@ const DimensionList = ({
   units: string;
   dpi: number;
 }) => {
-  const dispatch = useDispatch();
-  const getDimensionValue = (n: number) =>
-    units === "in" ? Math.round((n / dpi) * 100) / 100 : n;
+  const { updateDimension, removeDimension, dispatch } = useDerivativesConfig();
+  const handleSubmit = useCallback(
+    (dimension: Dimension) => (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const formData = new FormData(e.target as HTMLFormElement);
+      const width = formData.get("width");
+      const height = formData.get("height");
+
+      dispatch(
+        updateDimension({
+          id: dimension.id,
+          width:
+            units === "in"
+              ? inchesToPixels(Number(width), dpi)
+              : Number(width),
+          height:
+            units === "in"
+              ? inchesToPixels(Number(height), dpi)
+              : Number(height),
+        })
+      );
+    },
+    [units, dpi]
+  );
 
   return (
     <div {...props}>
       {dimensions.map((dimension) => {
-        const width = getDimensionValue(dimension.width);
-        const height = getDimensionValue(dimension.height);
+        const width =
+          units === "in"
+            ? pixelsToInches(dimension.width, dpi)
+            : dimension.width;
+        const height =
+          units === "in"
+            ? pixelsToInches(dimension.height, dpi)
+            : dimension.height;
         const widthText = width > 0 ? `${width} ${units}` : "aspect";
         const heightText = height > 0 ? `${height} ${units}` : "aspect";
         const widthTitle =
@@ -144,16 +162,40 @@ const DimensionList = ({
               >
                 <Trash />
               </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="[&_svg]:size-3 -ml-2 hover:bg-transparent"
-                onClick={() => {
-                  alert("Edit");
-                }}
-              >
-                <Pencil />
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="[&_svg]:size-3 -ml-2 hover:bg-transparent"
+                  >
+                    <Pencil />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Edit Dimension</DialogTitle>
+                    <DialogDescription>
+                      Edit the width and height of the dimension.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <form onSubmit={handleSubmit(dimension)}>
+                    <div className="flex w-full max-w-sm items-center space-x-2 mt-2">
+                      <DimensionsInput
+                        units={units}
+                        defaultValue={{
+                          width,
+                          height,
+                          id: dimension.id,
+                        }}
+                      />
+                      <DialogClose asChild>
+                        <Button type="submit">Save</Button>
+                      </DialogClose>
+                    </div>
+                  </form>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         );

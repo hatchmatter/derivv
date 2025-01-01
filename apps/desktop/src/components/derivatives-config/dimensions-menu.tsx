@@ -33,6 +33,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@derivv/ui/components/select";
+
 import { useDerivativesConfig } from "@/hooks/use-derivatives-config";
 import { UNITS, DPI } from "@/lib/constants";
 import { parseCsv } from "@/lib/csv";
@@ -42,12 +43,17 @@ export function DimensionsMenu() {
   const { dimensionsSettings, updateDimensionsSettings, dispatch } =
     useDerivativesConfig();
 
+  /**
+   * The state is controlled here in order to display settings depending on the
+   * units selected.
+   */
   const [units, setUnits] = useState(dimensionsSettings.units);
   const [dpi, setDpi] = useState(dimensionsSettings.dpi);
   const [display2x, setDisplay2x] = useState(dimensionsSettings["2x"]);
   const [display3x, setDisplay3x] = useState(dimensionsSettings["3x"]);
 
   const importCsv = async () => {
+    // TODO: implement properly
     const paths = await open({
       multiple: false,
       filters: [
@@ -95,10 +101,7 @@ export function DimensionsMenu() {
 
   const renderDisplaySettings = () => {
     return (
-      <div
-        className=""
-        title="Double and/or triple the size of the derivative images for retina and higher resolution displays"
-      >
+      <div title="Double and/or triple the size of the derivative images for retina and higher resolution displays">
         <Label>Display</Label>
         <div className="flex items-center space-x-4 py-2">
           <div className="flex items-center space-x-2">
@@ -149,10 +152,12 @@ export function DimensionsMenu() {
               onSelect={() => settingsTriggerRef.current?.click()}
             >
               Settings
+              {/* TODO: implement shortcut */}
               <DropdownMenuShortcut>⌘,</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem onSelect={importCsv}>
               Import CSV
+              {/* TODO: implement shortcut */}
               <DropdownMenuShortcut>⌘+I</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

@@ -1,6 +1,7 @@
 # Derivv - Resize images in the browser before uploading
 
 Original repo: https://github.com/levivoelz/derivv
+Website: https://derivv.com
 
 Save time and bandwidth by resizing images in the browser before uploading. Configure target sizes and options to fit your needs.
 
